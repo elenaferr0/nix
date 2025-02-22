@@ -9,7 +9,6 @@
   home.homeDirectory = vars.homeDirectory;
 
   programs.home-manager.enable = true;
-  programs.zsh.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -42,18 +41,24 @@
     ./desktop/hyprland.nix
     ./desktop/hyprlock.nix
     ./desktop/hyprpaper.nix
-
     ./desktop/waybar.nix
+    ./desktop/xdg.nix
 
     # Tools
+    ./tools/bat.nix
     ./tools/git.nix
     ./tools/nvim.nix
+    ./tools/ssh.nix
+    ./tools/zsh.nix
+
+    # Programs
+    ./programs/alacritty.nix
+    ./programs/firefox.nix
   ];
 
   home.packages = with pkgs; [
-    alacritty
     btop
-    firefox
+    brightnessctl
     ripgrep
     tree
     typst

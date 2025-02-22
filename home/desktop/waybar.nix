@@ -9,7 +9,7 @@
     enable = true;
     settings = {
       mainBar = {
-        position = "bottom";
+        position = "top";
         height = 22;
         modules-left = ["hyprland/workspaces"];
         modules-right = ["hyprland/language" "network" "pulseaudio" "backlight" "battery" "clock"];
@@ -18,9 +18,10 @@
           format = "{icon}";
         };
         "hyprland/language" = {
-          format = "{flag} {variant}";
+	  format = " {}";
+          format-en = "US";
+          format-it = "IT";
         };
-
         "network" = {
           format-wifi = "";
           format-ethernet = "󰈀";

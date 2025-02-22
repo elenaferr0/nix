@@ -28,7 +28,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
+          home-manager.backupFileExtension = "bak";
           home-manager.users."${vars.user}" = {
             imports = [
               ./home

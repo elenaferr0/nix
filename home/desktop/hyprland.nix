@@ -23,8 +23,7 @@
         repeat_rate = 40;
         repeat_delay = 300;
         kb_layout = "us,it";
-        kb_options = "grp:mod_x_toggle";
-        # kb_options = "grp:alt_space_toggle";
+        kb_options = "grp:win_space_toggle";
       };
 
       device = [
@@ -33,7 +32,7 @@
           sensitivity = 0.1;
           accel_profile = "adaptive";
 
-          natural_scroll = false;
+          natural_scroll = true;
           drag_lock = true;
         }
       ];
@@ -95,8 +94,8 @@
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrevious, exec, playerctl previous"
         ", XF86AudioStop, exec, playerctl stop"
-        ", XF86MonBrightnessUp, exec, light -A 2"
-        ", XF86MonBrightnessDown, exec, light -U 2"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
