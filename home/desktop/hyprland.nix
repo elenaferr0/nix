@@ -14,8 +14,7 @@
     # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
       env = [
-        "XCURSOR_SIZE,32"
-        "HYPRCURSOR_SIZE,32"
+        "XCURSOR_SIZE,24"
       ];
       animations = {
         enabled = false;
@@ -23,13 +22,14 @@
       input = {
         repeat_rate = 40;
         repeat_delay = 300;
-        kb_layout = "us,us(intl)";
-        kb_options = "grp:shifts_toggle,caps:escape";
+        kb_layout = "us,it";
+        kb_options = "grp:mod_x_toggle";
+        # kb_options = "grp:alt_space_toggle";
       };
 
       device = [
         {
-          name = "msft0003:00-06cb:ce2d-touchpad";
+          name = "etps/2-elantech-touchpad";
           sensitivity = 0.1;
           accel_profile = "adaptive";
 
@@ -44,17 +44,20 @@
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         enable_swallow = true;
-        swallow_regex = "^(footclient|foot)$";
+        swallow_regex = "^(alacritty)$";
       };
 
       "$mod" = "SUPER";
       bind =
         [
           "$mod, Escape, exec, hyprlock -q"
-          "$mod&ALT_L, 1, exec, scr"
           "$mod, Space, exec, bemenu-run"
-          "$mod, Return, exec, footclient"
-          "$mod, w, killactive,"
+          "$mod, Return, exec, alacritty"
+          "$mod, Q, killactive,"
+	  "$mod, V, togglefloating"
+	  # nautilus mod N
+	  "$mod, space, togglesplit"
+	  "$mod, F, fullscreen, 1" # maximize
         ]
         ++ (
           # workspaces
@@ -70,11 +73,19 @@
             10)
         )
         ++ [
-          "$mod, h, movefocus, l"
-          "$mod, l, movefocus, r"
-          "$mod, k, movefocus, u"
-          "$mod, j, movefocus, d"
+          "$mod, H, movefocus, l"
+          "$mod, L, movefocus, r"
+          "$mod, K, movefocus, u"
+          "$mod, J, movefocus, d"
+	]
+	++ [
+          "$mod SHIFT, H, movewindow, l"
+          "$mod SHIFT, L, movewindow, r"
+          "$mod SHIFT, K, movewindow, u"
+          "$mod SHIFT, J, movewindow, d"
         ];
+	# TODO: screenshot shortcuts
+	# TODO: powermenu shortcuts
       bindle = [
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"
@@ -91,28 +102,23 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
-
       windowrulev2 = [
-        "float,class:(kitty)"
+        "float,title: Calculator"
+        "float,title: Calendar"
+	# Rules for Jetbrains products
+	"float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
+	"float,class:^(jetbrains-.*),title:^(Welcome to.*)"
+	"center,class:^(jetbrains-.*),title:^(Replace All)$"
+	"allowsinput,class:^(jetbrains-.*)"
+      ];
+      monitor = [
+        "eDP-1,1920x1080@60,0x0,1"
+        "DP-4,1920x1080@60,1920x0,1"
       ];
     };
-
     systemd = {
       enable = true;
       variables = ["--all"];
     };
   };
-
-  # systemd.user.services.hyprland = {
-  #   Unit = {
-  #     Description = "Hyprland";
-  #   };
-  #   Install = {
-  #     WantedBy = ["default.target"];
-  #   };
-  #   Service = {
-  #     ExecStart = "${pkgs.hyprland}/bin/Hyprland";
-  #     Restart = "always";
-  #   };
-  # };
 }

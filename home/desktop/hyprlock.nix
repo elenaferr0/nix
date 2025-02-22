@@ -20,7 +20,7 @@
 
       background = [
         {
-          path = vars.homeDirectory + "/Pictures/wallpapers/current.jpg";
+          path = vars.homeDirectory + "/pictures/wallpapers/current.jpg";
         }
       ];
 
