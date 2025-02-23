@@ -35,6 +35,7 @@ systemFunction {
 
   modules = [
     home-manager
+    ../configuration.nix
     hostConfig
   ];
 }

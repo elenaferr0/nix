@@ -1,9 +1,4 @@
 {
-  config,
-  options,
-  pkgs,
-  ...
-}: {
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";

@@ -1,8 +1,4 @@
 {
-  config,
-  options,
-  pkgs,
-  lib,
   vars,
   ...
 }: {

@@ -7,6 +7,10 @@
   let vars = import ./vars.nix;
 in
 {
+  # system = {
+  #   stateVersion = lib.mkDefault "24.11";
+  # };
+
   imports = [
     ../common/locale.nix
     (import ../common/networking.nix { inherit vars; })

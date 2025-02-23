@@ -1,6 +1,4 @@
 {
-  config,
-  options,
   pkgs,
   vars,
   ...
@@ -9,10 +7,9 @@
     enable = true;
     settings = let
       hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
-      swaymsg = "${pkgs.sway}/bin/swaymsg";
     in {
       general = {
-        after_sleep_cmd = "${swaymsg} output * dpms on";
+        # after_sleep_cmd = "${swaymsg} output * dpms on";
         ignore_dbus_inhibit = false;
         lock_cmd = hyprlock;
       };
@@ -24,8 +21,8 @@
         }
         {
           timeout = 15 * 60; # 15 minutes
-          on-timeout = "${swaymsg} output * dpms off";
-          on-resume = "${swaymsg} output * dpms on";
+          # on-timeout = "${swaymsg} output * dpms off";
+          # on-resume = "${swaymsg} output * dpms on";
         }
       ];
     };

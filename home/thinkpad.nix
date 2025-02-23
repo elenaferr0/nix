@@ -12,24 +12,25 @@
 
     # Desktop
     ./desktop/cliphist.nix
-    ./desktop/fonts.nix
-    ./desktop/hypridle.nix
+
+    (import ./desktop/fonts.nix { inherit vars pkgs; })
+    (import ./desktop/hypridle.nix { inherit vars pkgs; })
     ./desktop/hyprland.nix
-    ./desktop/hyprlock.nix
-    ./desktop/hyprpaper.nix
+    (import ./desktop/hyprlock.nix { inherit vars pkgs; })
+    (import ./desktop/hyprpaper.nix { inherit vars; })
     (import ./desktop/waybar.nix { inherit vars pkgs; })
-    ./desktop/xdg.nix
+    (import ./desktop/xdg.nix { inherit pkgs; })
 
     # Tools
     ./tools/bat.nix
-    ./tools/git.nix
+    (import ./tools/git.nix { inherit vars; })
     ./tools/nvim.nix
     ./tools/ssh.nix
-    ./tools/zsh.nix
+    (import ./tools/zsh.nix { inherit pkgs; })
 
     # Programs
     ./programs/alacritty.nix
-    ./programs/firefox.nix
+    (import ./programs/firefox.nix { inherit vars; })
   ];
 
   home.packages = with pkgs; [
