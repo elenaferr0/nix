@@ -12,6 +12,9 @@
     enable = true;
     enableCompletion = true;
 
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza --header --git";
       ll = "${pkgs.eza}/bin/eza -a --long --header --git";
@@ -22,9 +25,6 @@
 
     prezto = {
       enable = true;
-      editor = {
-        keymap = "emacs";
-      };
       pmodules = [
         "environment"
         "terminal"
