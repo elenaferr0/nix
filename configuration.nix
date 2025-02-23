@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { 
+  inputs,
   config,
   pkgs,
   ... 
@@ -21,6 +22,7 @@
     curl
     neovim
     wl-clipboard
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   system.stateVersion = "24.11"; # Did you read the comment?

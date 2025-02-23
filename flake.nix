@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, systems, home-manager, ... }:
@@ -31,32 +35,5 @@
 	  host = "thinkpad";
 	};
       };
-    #   nixosConfigurations."${vars.hostname}" = nixpkgs.lib.nixosSystem {
-    #   pkgs = nixpkgs.legacyPackages."${vars.arch}";
-    #
-    #   modules = [
-    #     ./machines/thinkpad.nix
-    #     ./configuration.nix
-    #
-    #     home-manager.nixosModules.home-manager
-    #     {
-    #       home-manager.useGlobalPkgs = true;
-    #       home-manager.useUserPackages = true;
-    #       home-manager.backupFileExtension = "bak";
-    #       home-manager.users."${vars.user}" = {
-    #         imports = [
-    #           ./home
-    #         ];
-    #       };
-    #       # home-manager.sharedModules = [
-    #       #   nix-index-database.hmModules.nix-index
-    #       # ];
-    #       home-manager.extraSpecialArgs = {
-    #         vars = vars;
-    #         inputs = inputs;
-    #       };
-    #     }
-    #   ];
-    # };
   };
 }
