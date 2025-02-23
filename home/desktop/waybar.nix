@@ -1,6 +1,4 @@
 {
-  config,
-  options,
   pkgs,
   vars,
   ...
@@ -26,7 +24,6 @@
           format-wifi = "";
           format-ethernet = "󰈀";
           format-disconnected = "";
-          on-click = "${pkgs.foot}/bin/footclient -T nmtui ${pkgs.networkmanager}/bin/nmtui";
           tooltip-format-wifi = "{ifname} ({essid}): {ipaddr}/{cidr} via {gwaddr}";
           tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr} via {gwaddr}";
         };
