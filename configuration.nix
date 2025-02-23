@@ -111,6 +111,7 @@ in {
     git
     curl
     neovim
+    wl-clipboard
   ];
 
   # Open ports in the firewall.

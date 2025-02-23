@@ -11,7 +11,10 @@
     xwayland = {
       enable = true;
     };
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    extraConfig = ''
+     exec-once = wl-paste --type text --watch cliphist store
+     exec-once = wl-paste --type image --watch cliphist store
+    '';
     settings = {
       env = [
         "XCURSOR_SIZE,24"
