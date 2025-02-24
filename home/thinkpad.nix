@@ -1,6 +1,7 @@
 { 
   pkgs,
   vars,
+  inputs,
   config,
   ... 
 }: {
@@ -54,7 +55,7 @@
 
     # Programs
     ./programs/alacritty.nix
-    (import ./programs/firefox.nix { inherit vars; })
+    (import ./programs/firefox.nix { inherit vars inputs; })
   ];
 
 }

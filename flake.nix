@@ -11,6 +11,10 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-gnome-theme = { 
+      url = "github:rafaelmardojai/firefox-gnome-theme";
+      flake = false;
+    };
   };
 
   outputs = inputs @ { self, nixpkgs, systems, home-manager, ... }:

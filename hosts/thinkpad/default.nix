@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
   let vars = import ./vars.nix;
@@ -15,7 +16,7 @@ in
     ./keymap.nix
     ./printing.nix
     ./sound.nix
-    (import ./users.nix { inherit vars pkgs config; })
+    (import ./users.nix { inherit vars pkgs config inputs; })
   ];
 
   hardware.graphics = {

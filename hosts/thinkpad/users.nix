@@ -2,6 +2,7 @@
   pkgs,
   vars,
   config,
+  inputs,
   ...
 }:
 { 
@@ -14,5 +15,5 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
-  home-manager.users."${vars.user}" = (import ../../home/${vars.hostname}.nix { inherit vars pkgs config; });
+  home-manager.users."${vars.user}" = (import ../../home/${vars.hostname}.nix { inherit vars pkgs config inputs; });
 }
