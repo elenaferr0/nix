@@ -1,11 +1,35 @@
 { 
   pkgs,
   vars,
+  config,
   ... 
 }: {
   home.stateVersion = "24.11"; # Do not change
 
   home.file = {}; # Plain files
+
+  home.packages = with pkgs; [
+    btop
+    brightnessctl
+    ripgrep
+    tree
+    typst
+    unzip
+    zip
+
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+  ];
 
   imports = [
     (import ./default.nix { inherit vars; })
@@ -33,26 +57,4 @@
     (import ./programs/firefox.nix { inherit vars; })
   ];
 
-  home.packages = with pkgs; [
-    btop
-    brightnessctl
-    ripgrep
-    tree
-    typst
-    unzip
-    zip
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
 }

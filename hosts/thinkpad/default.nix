@@ -7,10 +7,6 @@
   let vars = import ./vars.nix;
 in
 {
-  # system = {
-  #   stateVersion = lib.mkDefault "24.11";
-  # };
-
   imports = [
     ../common/locale.nix
     (import ../common/networking.nix { inherit vars; })
@@ -19,7 +15,7 @@ in
     ./keymap.nix
     ./printing.nix
     ./sound.nix
-    (import ./users.nix { inherit vars pkgs; })
+    (import ./users.nix { inherit vars pkgs config; })
   ];
 
   hardware.graphics = {
@@ -40,4 +36,6 @@ in
     enable = true;
     xwayland.enable = true;
   };
+
+  virtualisation.docker.enable = true;
 }

@@ -12,7 +12,7 @@ let
   # TODO: Add darwin hosts
   hosts = lib.attrNames (outputs.nixosConfigurations);
 
-  hostConfig = import (../hosts + "/${host}");
+  hostConfig = import (../hosts + "/${host}/default.nix");
   vars = import (../hosts + "/${host}" + "/vars.nix");
   system = vars.arch;
   darwin = (builtins.match ".*darwin$" vars.arch) != null;
@@ -34,8 +34,8 @@ systemFunction {
   };
 
   modules = [
-    home-manager
     ../configuration.nix
+    home-manager
     hostConfig
   ];
 }
