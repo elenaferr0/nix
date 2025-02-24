@@ -34,8 +34,6 @@
         "completion"
         "prompt"
         "git"
-        "syntax-highlighting"
-        "autosuggestions"
       ];
       prompt = {
         theme = "skwp";
