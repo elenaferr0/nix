@@ -13,9 +13,20 @@
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "XCURSOR_SIZE,24"
       ];
+
       animations = {
         enabled = false;
       };
+
+      general = {
+        gaps_in = 6;
+	gaps_out = 6;
+      };
+
+      decoration = {
+        rounding = 10;  
+      };
+
       input = {
         repeat_rate = 40;
         repeat_delay = 300;
