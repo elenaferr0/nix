@@ -11,33 +11,38 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    firefox-gnome-theme = { 
+    firefox-gnome-theme = {
       url = "github:rafaelmardojai/firefox-gnome-theme";
       flake = false;
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, systems, home-manager, ... }:
-    let
-      inherit (self) outputs;
-      vars = import ./vars.nix;
-      lib = import ./lib {
-        inherit
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    systems,
+    home-manager,
+    ...
+  }: let
+    inherit (self) outputs;
+    vars = import ./vars.nix;
+    lib = import ./lib {
+      inherit
         self
         inputs
         nixpkgs
         outputs
-	;
-      };
-    in {
-      inherit lib;
+        ;
+    };
+  in {
+    inherit lib;
 
-      darwinConfigurations = {};
+    darwinConfigurations = {};
 
-      nixosConfigurations = {
-        thinkpad = lib.mkSystem {
-	  host = "thinkpad";
-	};
+    nixosConfigurations = {
+      thinkpad = lib.mkSystem {
+        host = "thinkpad";
       };
+    };
   };
 }

@@ -1,7 +1,4 @@
-{
-  vars,
-  ...
-}: {
+{vars, ...}: {
   services.hyprpaper = {
     enable = true;
     settings = {

@@ -1,7 +1,4 @@
-{
-  vars,
-  ...
-}: {
+{vars, ...}: {
   programs.git = {
     enable = true;
 

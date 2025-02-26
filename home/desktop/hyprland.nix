@@ -5,8 +5,8 @@
       enable = true;
     };
     extraConfig = ''
-     exec-once = wl-paste --type text --watch cliphist store
-     exec-once = wl-paste --type image --watch cliphist store
+      exec-once = wl-paste --type text --watch cliphist store
+      exec-once = wl-paste --type image --watch cliphist store
     '';
     settings = {
       env = [
@@ -20,11 +20,11 @@
 
       general = {
         gaps_in = 6;
-	gaps_out = 6;
+        gaps_out = 6;
       };
 
       decoration = {
-        rounding = 10;  
+        rounding = 10;
       };
 
       input = {
@@ -61,10 +61,10 @@
           "$mod, Space, exec, bemenu-run"
           "$mod, Return, exec, alacritty"
           "$mod, Q, killactive,"
-	  "$mod, V, togglefloating"
-	  # nautilus mod N
-	  "$mod, space, togglesplit"
-	  "$mod, F, fullscreen, 1" # maximize
+          "$mod, V, togglefloating"
+          # nautilus mod N
+          "$mod, space, togglesplit"
+          "$mod, F, fullscreen, 1" # maximize
         ]
         ++ (
           # workspaces
@@ -84,15 +84,15 @@
           "$mod, L, movefocus, r"
           "$mod, K, movefocus, u"
           "$mod, J, movefocus, d"
-	]
-	++ [
+        ]
+        ++ [
           "$mod SHIFT, H, movewindow, l"
           "$mod SHIFT, L, movewindow, r"
           "$mod SHIFT, K, movewindow, u"
           "$mod SHIFT, J, movewindow, d"
         ];
-	# TODO: screenshot shortcuts
-	# TODO: powermenu shortcuts
+      # TODO: screenshot shortcuts
+      # TODO: powermenu shortcuts
       bindle = [
         ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"
@@ -112,11 +112,11 @@
       windowrulev2 = [
         "float,title: Calculator"
         "float,title: Calendar"
-	# Rules for Jetbrains products
-	"float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
-	"float,class:^(jetbrains-.*),title:^(Welcome to.*)"
-	"center,class:^(jetbrains-.*),title:^(Replace All)$"
-	"allowsinput,class:^(jetbrains-.*)"
+        # Rules for Jetbrains products
+        "float,floating:0,class:^(jetbrains-.*),title:^(win.*)"
+        "float,class:^(jetbrains-.*),title:^(Welcome to.*)"
+        "center,class:^(jetbrains-.*),title:^(Replace All)$"
+        "allowsinput,class:^(jetbrains-.*)"
       ];
       monitor = [
         "eDP-1,1920x1080@60,0x0,1"

@@ -22,6 +22,6 @@
   };
 
   home.packages = with pkgs; [
-      nerd-fonts.blex-mono
+    nerd-fonts.blex-mono
   ];
 }

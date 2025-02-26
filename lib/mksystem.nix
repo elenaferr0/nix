@@ -2,11 +2,7 @@
   nixpkgs,
   inputs,
   outputs,
-}:
-{
-  host,
-}:
-let
+}: {host}: let
   lib = nixpkgs.lib;
 
   # TODO: Add darwin hosts
@@ -16,26 +12,29 @@ let
   vars = import (../hosts + "/${host}" + "/vars.nix");
   system = vars.arch;
   darwin = (builtins.match ".*darwin$" vars.arch) != null;
-  systemFunction = if darwin then inputs.nix-darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+  systemFunction =
+    if darwin
+    then inputs.nix-darwin.lib.darwinSystem
+    else nixpkgs.lib.nixosSystem;
 
-  home-manager = if darwin then
-      inputs.home-manager.darwinModules.home-manager
-    else
-      inputs.home-manager.nixosModules.home-manager;
+  home-manager =
+    if darwin
+    then inputs.home-manager.darwinModules.home-manager
+    else inputs.home-manager.nixosModules.home-manager;
 in
-systemFunction {
-  inherit system;
+  systemFunction {
+    inherit system;
 
-  specialArgs = {
-    inherit host;
-    inherit inputs;
-    inherit darwin;
-    inherit hosts;
-  };
+    specialArgs = {
+      inherit host;
+      inherit inputs;
+      inherit darwin;
+      inherit hosts;
+    };
 
-  modules = [
-    ../configuration.nix
-    home-manager
-    hostConfig
-  ];
-}
+    modules = [
+      ../configuration.nix
+      home-manager
+      hostConfig
+    ];
+  }

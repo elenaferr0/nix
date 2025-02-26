@@ -16,7 +16,7 @@
           format = "{icon}";
         };
         "hyprland/language" = {
-	  format = " {}";
+          format = " {}";
           format-en = "US";
           format-it = "IT";
         };

@@ -7,7 +7,7 @@
 
   programs.firefox = {
     enable = true;
-    languagePacks = [ "en-US" ];
+    languagePacks = ["en-US"];
 
     profiles.default = {
       name = "default";
@@ -35,10 +35,10 @@
       DisplayBookmarksToolbar = "always";
       DontCheckDefaultBrowser = true;
       EnableTrackingProtection = {
-          Value= true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
       };
       SearchBar = "unified";
 
@@ -47,7 +47,7 @@
         "extensions.pocket.enabled" = false;
         "browser.newtabpage.pinned" = "";
         "browser.topsites.contile.enabled" = false;
-	"browser.bookmarks.showMobileBookmarks" = true;
+        "browser.bookmarks.showMobileBookmarks" = true;
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.system.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
@@ -62,6 +62,10 @@
       };
 
       ExtensionSettings = {
+        "addon@darkreader.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+          installation_mode = "force_installed";
+        };
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
@@ -74,10 +78,10 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/fastforwardteam/latest.xpi";
           installation_mode = "force_installed";
         };
-	"idcac-pub@guus.ninja" = {
-	  install_url = "https://addons.mozilla.org/firefox/downloads/latest/istilldontcareaboutcookies/latest.xpi";
-	  installation_mode = "force_installed";
-	};
+        "idcac-pub@guus.ninja" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/istilldontcareaboutcookies/latest.xpi";
+          installation_mode = "force_installed";
+        };
 
         # youtube stuff
         "sponsorBlocker@ajay.app" = {

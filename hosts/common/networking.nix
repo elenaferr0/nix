@@ -1,7 +1,4 @@
-{
-  vars,
-  ...
-}: {
+{vars, ...}: {
   networking = {
     hostName = vars.hostname;
     firewall = {

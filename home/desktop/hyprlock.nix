@@ -1,7 +1,4 @@
-{
-  vars,
-  ...
-}: {
+{vars, ...}: {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -12,7 +9,7 @@
         immediate_render = true;
         no_fade_in = false;
         no_fade_out = false;
-	ignore_empty_input = true;
+        ignore_empty_input = true;
       };
 
       background = [
@@ -24,7 +21,7 @@
       label = [
         {
           text = "$TIME";
-	  text_align = "center";
+          text_align = "center";
           color = "rgba(255, 255, 255, 1)";
           font_size = 150;
           font_family = vars.fontFamilies.monospace + " Bold";

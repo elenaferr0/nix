@@ -1,10 +1,12 @@
-{ 
+{
   pkgs,
   vars,
   inputs,
   config,
-  ... 
-}: {
+  ...
+}: let
+  rebuild = import ./scripts/rebuild.nix;
+in {
   home.stateVersion = "24.11"; # Do not change
 
   home.file = {}; # Plain files
@@ -12,6 +14,8 @@
   home.packages = with pkgs; [
     btop
     brightnessctl
+    fend
+    (rebuild {pkgs = pkgs;})
     ripgrep
     tree
     typst
@@ -33,29 +37,28 @@
   ];
 
   imports = [
-    (import ./default.nix { inherit vars; })
+    (import ./default.nix {inherit vars;})
 
     # Desktop
     ./desktop/cliphist.nix
 
-    (import ./desktop/fonts.nix { inherit vars pkgs; })
-    (import ./desktop/hypridle.nix { inherit vars pkgs; })
+    (import ./desktop/fonts.nix {inherit vars pkgs;})
+    (import ./desktop/hypridle.nix {inherit vars pkgs;})
     ./desktop/hyprland.nix
-    (import ./desktop/hyprlock.nix { inherit vars pkgs; })
-    (import ./desktop/hyprpaper.nix { inherit vars; })
-    (import ./desktop/waybar.nix { inherit vars pkgs; })
-    (import ./desktop/xdg.nix { inherit pkgs; })
+    (import ./desktop/hyprlock.nix {inherit vars pkgs;})
+    (import ./desktop/hyprpaper.nix {inherit vars;})
+    (import ./desktop/waybar.nix {inherit vars pkgs;})
+    (import ./desktop/xdg.nix {inherit pkgs;})
 
     # Tools
     ./tools/bat.nix
-    (import ./tools/git.nix { inherit vars; })
+    (import ./tools/git.nix {inherit vars;})
     ./tools/nvim.nix
     ./tools/ssh.nix
-    (import ./tools/zsh.nix { inherit pkgs; })
+    (import ./tools/zsh.nix {inherit pkgs;})
 
     # Programs
     ./programs/alacritty.nix
-    (import ./programs/firefox.nix { inherit vars inputs; })
+    (import ./programs/firefox.nix {inherit vars inputs;})
   ];
-
 }
